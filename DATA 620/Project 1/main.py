@@ -89,7 +89,7 @@ for route_info in routes:
             equipment: {equipment}})
         """, route_info)
 
-    session.run("MATCH(n: Airport {iata: {source}}) MATCH(v: Route {source_airport: {source}}) CREATE (n)-[:flies_to]->(v)", route)
-    session.run("MATCH(n: Airport {iata: {destination}}) MATCH(v: Route {destination_airport: {destination}}) CREATE (n)-[:flies_to]->(v)", route)
+    session.run("MATCH(n: Airport {iata: {source}}) MATCH(v: Route {source_airport: {source}}) CREATE (n)-[:route]->(v)", route)
+    session.run("MATCH(n: Airport {iata: {destination}}) MATCH(v: Route {destination_airport: {destination}}) CREATE (n)-[:route]->(v)", route)
     
 session.close()
