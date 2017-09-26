@@ -9,15 +9,15 @@ def clean_line(line):
 
 def extract_data(file_loc, props):
     # Read in file
-    routes_file = open(file_loc, "r")
-    routes_lines = routes_file.readlines()
-    routes_file.close()
+    file_obj = open(file_loc, "r")
+    lines = file_obj.readlines()
+    file_obj.close()
     
 
     #Takes the lines that were read in, does a split to create an array, then zips
     #with the props to create a 2d array, and then forms a dictionary from that 2d array,
     #and returns a list of those dictionaries.
-    return list(map(lambda x: dict(zip(props, clean_line(x).split(","))), routes_lines))
+    return list(map(lambda x: dict(zip(props, clean_line(x).split(","))), lines))
     
 airport_props = [
         "airport_id",
@@ -48,8 +48,8 @@ route_props = [
         "equipment"
         ]
 
-routes = extract_data("routes_small.dat", route_props)
-airports = extract_data("airports_small.dat", airport_props)
+routes = extract_data("routes.dat", route_props)
+airports = extract_data("airports.dat", airport_props)
 
 driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", "password"))
 session = driver.session()
