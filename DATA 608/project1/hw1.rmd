@@ -72,6 +72,7 @@ Lets dig in on the state with the 3rd most companies in the data set. Imagine yo
 ```{r}
 
 # Answer Question 2 here
+stateId <- countByState$State[nrow(countByState)-(1)]
 data <- dplyr::filter(inc, State == stateId)
 ok <- complete.cases(data)
 completeStateData <- data[ok,]
