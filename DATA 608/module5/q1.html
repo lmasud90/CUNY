@@ -1,0 +1,67 @@
+<html>
+
+<head><title>Intro Question</title></head>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    function reverse(){
+        var input = $('#str').val()
+        var reversed = input.split("").reverse().join("")
+
+        $('#q1').text("The revesed string is "+reversed)
+
+    }
+
+</script>
+
+<h3>Question 1</h3>
+<p>
+<form>
+    <p>Please enter a string to reverse:</p>
+    <input id="str" type="string" >
+    <input type="button" value="check" onClick="reverse();">
+</form>
+</p>
+
+<div id="q1"></div>
+
+<h3>Question 2</h3>
+
+<script type="text/javascript">
+    function multiples(){
+        var num = parseInt($('#num').val())
+        var total = num
+
+        var content = "<table border=\"1\">"
+        for(i=0; i<5; i++){
+            content+= "<tr>"
+            for(n=0; n<4; n++){
+                content+="<td>"
+                content+=total
+                content+="</td>"
+
+                total+= num
+            }
+            content+="</tr>"
+        }
+        content+="</table>"
+
+        $("#q2").append(content)
+    }
+</script>
+
+<p>
+<form>
+    <p>Please enter number:</p>
+    <input id="num" type="number" size="4" >
+    <input type="button" value="check" onClick="multiples();">
+</form>
+</p>
+
+<div id="q2"></div>
+
+</body>
+</html>
